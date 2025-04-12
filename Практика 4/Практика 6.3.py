@@ -63,7 +63,7 @@ class VM:
 
     def run(self):
         ex = self.code[0]
-        self.pc = 1
+        self.pc = ex + 1
         while self.pc < len(self.code):
             bcode = self.code[self.pc]
             op = self.OP_NAMES[bcode & 0b111]
@@ -73,6 +73,10 @@ class VM:
                 self.stack.append(num)
             elif op == 'op':
                 self.LIB[list(self.LIB.keys())[num]]()
+            elif op == 'call':
+                self.call(num)
+            elif op == 'is':
+                self.is_(num)
             elif op == 'exit':
                 break
             self.pc += 1

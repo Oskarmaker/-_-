@@ -27,7 +27,7 @@ class VM:
             '!': self.not_implemented
         }
 
-    def not_implemented(vm):
+    def not_implemented(self):
         raise RuntimeError('Not implemented!')
 
     def summ(self):
