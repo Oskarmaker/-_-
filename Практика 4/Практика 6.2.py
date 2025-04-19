@@ -31,8 +31,7 @@ class VM:
         raise RuntimeError('Not implemented!')
 
     def summ(self):
-        ans = self.stack[-1] + self.stack[-2]
-        del self.stack[-1], self.stack[-1]
+        ans = self.stack.pop() + self.stack.pop()
         self.stack.append(ans)
 
     def output(self):
